@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class AddEditNoteActivity extends AppCompatActivity {
     public static final String EXTRA_ID =
             "com.example.stinga.archecturecomponents.id";
@@ -19,20 +22,18 @@ public class AddEditNoteActivity extends AppCompatActivity {
             "com.example.stinga.archecturecomponents.description";
     public static final String EXTRA_PRIORITY =
             "com.example.stinga.archecturecomponents.priority";
-
+    @BindView(R.id.edit_text_title)
     private EditText editTextTitle;
+    @BindView(R.id.edit_text_description)
     private EditText editTextDescription;
+    @BindView(R.id.numberPicker_note_priority)
     private NumberPicker numberPickerPriority;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
-
-        editTextTitle = findViewById(R.id.edit_text_title);
-        editTextDescription = findViewById(R.id.edit_text_description);
-        numberPickerPriority = findViewById(R.id.numberPicker_note_priority);
-
+        ButterKnife.bind(this);
         numberPickerPriority.setMinValue(1);
         numberPickerPriority.setMaxValue(10);
 
